@@ -47,16 +47,11 @@ I know a lot about GTM strategy, product-led growth, ABM, sales playbooks, etc.
     if prompt := st.chat_input(placeholder="How do you make ABM and PLG work together?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
+        st.chat_message("assistant").write("give me a few seconds... I am checking my sources...")
         response = chat(prompt)
-        st.chat_message("assistant").write(response)
+        st.chat_message("assistant").write(response + "<br><a>sources</a>", unsafe_allow_html=True)
         st.session_state.messages.append({"role": "assistant", "content": response})
-
-        # with st.chat_message("assistant"):
-            # st_cb = StreamlitCallbackHandler(st.container(), expand_new_thoughts=False)
-            # response = search_agent.run(st.session_state.messages, callbacks=[st_cb])
-            # st.session_state.messages.append({"role": "assistant", "content": response})
-            # st.write(response)
-
+        
 
 if __name__ == "__main__":
     run()

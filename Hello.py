@@ -1,8 +1,10 @@
 import streamlit as st
 from streamlit.logger import get_logger
+import superpowered
 
 LOGGER = get_logger(__name__)
 
+print(st.secrets)
 
 def run():
     st.set_page_config(
@@ -26,6 +28,20 @@ I know a lot about GTM strategy, product-led growth, ABM, sales playbooks, etc.
 
     for msg in st.session_state.messages:
         st.chat_message(msg["role"]).write(msg["content"])
+
+
+# # Initialize API key and secret
+# os.environ["SUPERPOWERED_API_KEY_ID"]="INSERT_API_KEY_ID_HERE"
+# os.environ["SUPERPOWERED_API_KEY_SECRET"]="INSERT_API_KEY_SECRET_HERE"
+
+# # Make the request for the desired chat thread and message
+# response = superpowered.get_chat_response(
+#     thread_id="c2fc2461-5377-4a90-8a4a-579ae40aae3f",
+#     input="",
+# )
+
+# # Print the response
+# print (response["interaction"]["model_response"]["content"])
 
     if prompt := st.chat_input(placeholder="How do you make ABM and PLG work together?"):
         st.session_state.messages.append({"role": "user", "content": prompt})

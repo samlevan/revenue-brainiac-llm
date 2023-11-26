@@ -11,7 +11,7 @@ from refresh_chat import refresh_chat_widget
 
 # Initialize API key and secret
 os.environ["SUPERPOWERED_API_KEY_ID"] = st.secrets.SUPERPOWERED_API_KEY
-os.environ["SUPERPOWERED_API_KEY_SECRET"]= st.secrets.SUPERPOWERED_SECRET_KEY
+os.environ["SUPERPOWERED_API_KEY_SECRET"] = st.secrets.SUPERPOWERED_SECRET_KEY
 
 LOGGER = get_logger(__name__)
 

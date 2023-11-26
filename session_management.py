@@ -10,11 +10,12 @@ from cookie_utils import get_session_cookie, set_session_cookie
 COOKIE_NAME = 'superpowered_thread_id'
 
 def get_sql_connection(): 
-    os.environ["pg_host"] = st.secrets.pg_host
-    os.environ["pg_port"] = st.secrets.pg_port
-    os.environ["pg_db"] = st.secrets.pg_db
-    os.environ["pg_username"] = st.secrets.pg_username
-    os.environ["pg_password"] = st.secrets.pg_password
+    if not os.environ["pg_host"]:
+        os.environ["pg_host"] = st.secrets.pg_host
+        os.environ["pg_port"] = st.secrets.pg_port
+        os.environ["pg_db"] = st.secrets.pg_db
+        os.environ["pg_username"] = st.secrets.pg_username
+        os.environ["pg_password"] = st.secrets.pg_password
 
     conn = st.connection(
         'postgres',

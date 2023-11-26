@@ -9,9 +9,10 @@ from sidebar import add_sidebar
 from session_management import session_initialize, session_save
 from refresh_chat import refresh_chat_widget
 
-# Initialize API key and secret
-os.environ["SUPERPOWERED_API_KEY_ID"] = st.secrets.SUPERPOWERED_API_KEY
-os.environ["SUPERPOWERED_API_KEY_SECRET"] = st.secrets.SUPERPOWERED_SECRET_KEY
+# Check if environment variables are set, otherwise use Streamlit secrets
+if not os.getenv("SUPERPOWERED_API_KEY_ID") or not os.getenv("SUPERPOWERED_API_KEY_SECRET"):
+    os.environ["SUPERPOWERED_API_KEY_ID"] = st.secrets.SUPERPOWERED_API_KEY
+    os.environ["SUPERPOWERED_API_KEY_SECRET"] = st.secrets.SUPERPOWERED_SECRET_KEY
 
 LOGGER = get_logger(__name__)
 

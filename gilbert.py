@@ -4,6 +4,9 @@ import superpowered
 import os
 import datetime
 
+from sidebar import add_sidebar 
+from superpowered_utils import create_new_thread
+
 # Initialize API key and secret
 os.environ["SUPERPOWERED_API_KEY_ID"] = st.secrets.SUPERPOWERED_API_KEY
 os.environ["SUPERPOWERED_API_KEY_SECRET"]= st.secrets.SUPERPOWERED_SECRET_KEY
@@ -27,26 +30,11 @@ def run():
         page_icon="👋",
     )
 
-    with st.sidebar:
-        st.write("hi")
-        st.button("start new chat")
-        # st.write(st.session_state)
+    add_sidebar(st)
             
-
-    st.write("# Hi, I am Gilbert, your LLM GTM expert 👋")
-
-    st.markdown(
-        """
-I have read every single blog post from MadKudu and OpenView.
-I know a lot about GTM strategy, product-led growth, ABM, sales playbooks, etc.
-    """
-    )
-
-    st.write(datetime.datetime.now().strftime("%H:%M:%S"))
-
-    thread_id = ''
     if "thread_id" not in st.session_state:
-        thread_id = "c2fc2461-5377-4a90-8a4a-579ae40aae3f"
+        thread = create_new_thread(st)
+        st.session_state["thread_id"] = thread["id"]
 
     if "messages" not in st.session_state:
         st.session_state["messages"] = [
@@ -72,17 +60,18 @@ I know a lot about GTM strategy, product-led growth, ABM, sales playbooks, etc.
         
         response = ''
         with st.spinner('Checking my sources...'):
-            response = chat(thread_id, prompt)
+            response = chat(st.session_state["thread_id"], prompt)
 
             st.session_state.messages.append({"role": "assistant", "content": response["model_response"]["content"]})
             assistant_message = st.chat_message("assistant")
             assistant_message.write(response["model_response"]["content"])
         
-            
             if response["ranked_results"]:
                 for index, result in enumerate(response["ranked_results"]):
                     source_title = "Segment #" + str(index+1) + " from " + result["metadata"]["document"]["title"]
                     with assistant_message.expander(source_title):
+                        source_url = result["metadata"]["document"]["link_to_source"]
+                        st.write(f'source: <a href="{source_url}">{source_url}</a>', unsafe_allow_html=True)
                         st.session_state.messages.append({"role": "assistant", "action": "expander", "title": source_title, "content": result["metadata"]["original_content"]})
                         st.markdown(result["metadata"]["original_content"])                        
             

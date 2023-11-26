@@ -10,7 +10,7 @@ from cookie_utils import get_session_cookie, set_session_cookie
 COOKIE_NAME = 'superpowered_thread_id'
 
 def get_sql_connection(): 
-    if not os.environ["pg_host"]:
+    if not os.getenv("pg_host"):
         os.environ["pg_host"] = st.secrets.pg_host
         os.environ["pg_port"] = st.secrets.pg_port
         os.environ["pg_db"] = st.secrets.pg_db

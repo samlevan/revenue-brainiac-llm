@@ -29,7 +29,7 @@ def chat(thread_id, prompt):
 
 def run():
     st.set_page_config(
-        page_title="Gilbert, your AI GTM expert",
+        page_title="Carol, your AI CMO advisor",
         page_icon="👋",
     )
 
@@ -59,8 +59,8 @@ def run():
                     with assistant_message.expander(source_title):
                         source_url = result["metadata"]["document"]["link_to_source"]
                         st.write(f'source: <a href="{source_url}">{source_url}</a>', unsafe_allow_html=True)
-                        st.session_state.messages.append({"role": "assistant", "action": "expander", "title": source_title, "content": result["metadata"]["original_content"]})
-                        st.markdown(result["metadata"]["original_content"])                        
+                        st.session_state.messages.append({"role": "assistant", "action": "expander", "title": source_title, "content": result["metadata"]["original_content"], "source_url": source_url})
+                        st.markdown(result["metadata"]["original_content"], unsafe_allow_html=True)                        
             
             del response
             session_save()

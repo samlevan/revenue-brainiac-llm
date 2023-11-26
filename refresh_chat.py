@@ -14,6 +14,9 @@ def refresh_chat_widget():
         rewriting_the_chat_current_role = msg["role"]
         if msg.get("action") == "expander":
             with current_chat_message.expander(msg["title"]):
+                if "source_url" in msg:
+                    source_url = msg["source_url"]
+                    st.write(f'source: <a href="{source_url}">{source_url}</a>', unsafe_allow_html=True)
                 st.markdown(msg["content"])            
         else:
             current_chat_message.write(msg["content"])

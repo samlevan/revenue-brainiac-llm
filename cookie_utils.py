@@ -7,14 +7,16 @@ import uuid
 # https://discuss.streamlit.io/t/new-component-streamlit-js-eval/30861
 
 def get_cookie_value(cookie_string, cookie_name):
-    # Create a SimpleCookie object
     cookie = http.cookies.SimpleCookie()
-    cookie.load(cookie_string)
+    try:
+        cookie.load(cookie_string)
 
-    # Extract and return the value of the specified cookie
-    if cookie_name in cookie:
-        return cookie[cookie_name].value
-    else:
+        # Extract and return the value of the specified cookie
+        if cookie_name in cookie:
+            return cookie[cookie_name].value
+        else:
+            return None
+    except:
         return None
 
 def get_session_cookie():

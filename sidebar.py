@@ -17,3 +17,6 @@ def add_sidebar(st):
         if btn_new_chat:
             response = create_new_thread(force_refresh=True)
 
+
+        disclaimer = '<p style="font-size: 10px;">This LLM can make mistakes. Consider checking important information.</p>'
+        st.markdown(disclaimer, unsafe_allow_html=True)

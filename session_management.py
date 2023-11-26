@@ -69,7 +69,7 @@ def session_initialize():
 def session_save():
     messages = st.session_state["messages"]
     thread_id = st.session_state["thread_id"]
-    conn = st.connection("postgresql", type="sql")
+    conn = get_sql_connection()
 
     with conn.session as session:
             messages_as_json = json.dumps(messages)

@@ -5,3 +5,6 @@ pydeck
 streamlit
 superpowered-sdk
 streamlit-scrollable-textbox
+psycopg2-binary
+sqlalchemy
+extra-streamlit-components

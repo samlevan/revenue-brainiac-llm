@@ -2,10 +2,12 @@ import streamlit as st
 from streamlit.logger import get_logger
 import superpowered
 import os
-import datetime
+# import datetime
+
 
 from sidebar import add_sidebar 
-from superpowered_utils import create_new_thread
+from session_management import session_initialize, get_saved_messages_from_thread, create_new_thread
+from refresh_chat import refresh_chat_widget
 
 # Initialize API key and secret
 os.environ["SUPERPOWERED_API_KEY_ID"] = st.secrets.SUPERPOWERED_API_KEY
@@ -31,32 +33,17 @@ def run():
     )
 
     add_sidebar(st)
-            
-    if "thread_id" not in st.session_state:
-        thread = create_new_thread(st)
-        st.session_state["thread_id"] = thread["id"]
 
-    if "messages" not in st.session_state:
-        st.session_state["messages"] = [
-            {"role": "assistant", "content": "How can I help you?"}
-        ]
+    # session_initialize()
 
-    rewriting_the_chat_current_role = 'user'
-    current_chat_message = ''
-    for msg in st.session_state.messages:
-        if rewriting_the_chat_current_role != msg["role"]:
-            current_chat_message = st.chat_message(msg["role"])
-        rewriting_the_chat_current_role = msg["role"]
-        if msg.get("action") == "expander":
-            with current_chat_message.expander(msg["title"]):
-                st.markdown(msg["content"])            
-        else:
-            current_chat_message.write(msg["content"])
+    create_new_thread()
+    refresh_chat_widget()
 
-
+    
     if prompt := st.chat_input(placeholder="How do you make ABM and PLG work together?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
+        # session_save(st)
         
         response = ''
         with st.spinner('Checking my sources...'):
@@ -76,6 +63,7 @@ def run():
                         st.markdown(result["metadata"]["original_content"])                        
             
             del response
+            # session_save(st)
 
 if __name__ == "__main__":
     run()

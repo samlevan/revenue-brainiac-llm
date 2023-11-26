@@ -1,4 +1,4 @@
-from superpowered_utils import create_new_thread
+from session_management import create_new_thread
 
 def add_sidebar(st):
 
@@ -13,10 +13,13 @@ def add_sidebar(st):
         """
         )
 
+        st.write(st.experimental_user)
+
+        if 'messages' in st.session_state:
+            st.write(st.session_state["messages"])
 
         btn_new_chat = st.button("\+ new chat thread")
         if btn_new_chat:
             response = create_new_thread(st)
-
 
 

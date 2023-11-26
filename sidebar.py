@@ -13,13 +13,7 @@ def add_sidebar(st):
         """
         )
 
-        st.write(st.experimental_user)
-
-        if 'messages' in st.session_state:
-            st.write(st.session_state["messages"])
-
         btn_new_chat = st.button("\+ new chat thread")
         if btn_new_chat:
-            response = create_new_thread(st)
-
+            response = create_new_thread(force_refresh=True)
 

@@ -6,7 +6,7 @@ import os
 
 
 from sidebar import add_sidebar 
-from session_management import session_initialize, get_saved_messages_from_thread, create_new_thread
+from session_management import session_initialize, session_save
 from refresh_chat import refresh_chat_widget
 
 # Initialize API key and secret
@@ -34,16 +34,15 @@ def run():
 
     add_sidebar(st)
 
-    # session_initialize()
+    session_initialize()
 
-    create_new_thread()
     refresh_chat_widget()
 
     
     if prompt := st.chat_input(placeholder="How do you make ABM and PLG work together?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         st.chat_message("user").write(prompt)
-        # session_save(st)
+        session_save()
         
         response = ''
         with st.spinner('Checking my sources...'):
@@ -63,7 +62,7 @@ def run():
                         st.markdown(result["metadata"]["original_content"])                        
             
             del response
-            # session_save(st)
+            session_save()
 
 if __name__ == "__main__":
     run()

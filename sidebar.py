@@ -96,6 +96,13 @@ def add_sidebar(st):
 
         st.markdown("Made with ❤️ by the people at [MadKudu](https://madkudu.com)")
 
-        
+
+        with st.expander('Credit'):
+            credit = """
+            - [OpenView](https://www.openviewpartners.com) for the fantastic content they have published over the years. This AI read lots of it.
+            - [Streamlit](https://streamlit.io/) for making it very easy to build apps like this.
+            """
+            st.markdown(credit, unsafe_allow_html=True)
+
         disclaimer = '<p style="font-size: 10px;">This LLM can make mistakes. Consider checking important information.</p>'
         st.markdown(disclaimer, unsafe_allow_html=True)

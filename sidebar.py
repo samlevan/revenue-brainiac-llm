@@ -36,7 +36,7 @@ def add_sidebar(st):
         """, unsafe_allow_html=True)
 
         with st.expander('2️⃣ I share my sources.'):
-            st.markdown("""I am an AI and I am ~~often~~ sometimes wrong. This is why I share what I used to craft answers. 
+            st.markdown("""I am an AI and I am sometimes wrong. This is why I share what I used to craft answers. 
                     It makes it easy for you to check what I share. Additionaly, those sources are often very interesting posts to read too if you want to get deeper on a topic.
         """, unsafe_allow_html=True)
 

@@ -1,12 +1,19 @@
 import streamlit as st
 
+FIRST_MESSAGE = """What sales or marketing question is on your mind?
+
+For example:
+- What key signals should I look at to identify accounts to go after?
+- When is it better to PQLs vs PQAs?
+- What's the alternative to cold outbound?
+"""
 
 def refresh_chat_widget():
     rewriting_the_chat_current_role = 'user'
     current_chat_message = ''
     
     if 'messages' not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]  
+        st.session_state["messages"] = [{"role": "assistant", "content": FIRST_MESSAGE}]  
     
     for msg in st.session_state.messages:
         if rewriting_the_chat_current_role != msg["role"]:

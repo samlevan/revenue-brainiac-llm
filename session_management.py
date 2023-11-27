@@ -8,6 +8,14 @@ from cookie_utils import get_session_cookie, set_session_cookie
 from sql_utils import get_sql_connection
 
 COOKIE_NAME = 'superpowered_thread_id'
+FIRST_MESSAGE = """What sales or marketing question is on your mind?
+
+For example:
+For example:
+- What key signals should I look at to identify accounts to go after?
+- When is it better to PQLs vs PQAs?
+- What's the alternative to cold outbound?
+laptop, """
 
 
 def get_saved_messages_from_thread(thread_id):
@@ -38,7 +46,7 @@ def session_initialize():
             if messages:
                 st.session_state["messages"] = json.loads(messages)
             else: 
-                st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]  
+                st.session_state["messages"] = [{"role": "assistant", "content": FIRST_MESSAGE}]  
             
         # if there is no thread_id in the session state or in cookie, create one and update cookie
         else:
@@ -74,7 +82,7 @@ def create_new_thread(force_refresh=False):
         thread_id = response["id"]
         st.session_state["thread_id"] = thread_id
         st.session_state["messages"] = [
-            {"role": "assistant", "content": "How can I help you?"}
+            {"role": "assistant", "content": FIRST_MESSAGE}
         ]
 
     st.sidebar.write('New thread id ' + st.session_state["thread_id"])

@@ -15,7 +15,7 @@ def add_sidebar(st):
             response = create_new_thread(force_refresh=True)
 
 
-        st.write("# Hi, I am Carol 👋")
+        st.markdown("# Hi, I am Carol 👋   [:blue[BETA]]")
 
         st.markdown(
             """

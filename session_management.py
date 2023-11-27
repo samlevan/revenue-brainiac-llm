@@ -14,8 +14,7 @@ For example:
 For example:
 - What key signals should I look at to identify accounts to go after?
 - When is it better to use PQLs vs PQAs?
-- What's the alternative to cold outbound?
-laptop, laptop and browser it up sad"""
+- How do you make ABM and PLG work together?"""
 
 
 def get_saved_messages_from_thread(thread_id):

@@ -1,39 +1,18 @@
 import datetime
 import superpowered
-from sqlalchemy import text
 import streamlit as st
 import json
-import os
+from sqlalchemy import text
 
 from cookie_utils import get_session_cookie, set_session_cookie
+from sql_utils import get_sql_connection
 
 COOKIE_NAME = 'superpowered_thread_id'
 
-def get_sql_connection(): 
-    if not os.getenv("pg_host"):
-        os.environ["pg_host"] = st.secrets.pg_host
-        os.environ["pg_port"] = st.secrets.pg_port
-        os.environ["pg_db"] = st.secrets.pg_db
-        os.environ["pg_username"] = st.secrets.pg_username
-        os.environ["pg_password"] = st.secrets.pg_password
-
-    conn = st.connection(
-        'postgres',
-        type = "sql",
-        dialect = "postgresql",
-        host = os.environ["pg_host"],
-        port = os.environ["pg_port"],
-        database = os.environ["pg_db"],
-        username = os.environ["pg_username"],
-        password = os.environ["pg_password"]
-    )
-
-    return conn
 
 def get_saved_messages_from_thread(thread_id):
     st.cache_data.clear()
     conn = get_sql_connection()
-    conn.reset()
     df = conn.query(f"SELECT * FROM chat_threads WHERE thread_id ='{thread_id}' ", show_spinner=False)
     messages = None
     try:

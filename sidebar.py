@@ -15,11 +15,11 @@ def add_sidebar(st):
             response = create_new_thread(force_refresh=True)
 
 
-        st.markdown("# Hi, I am Carol 👋   [:blue[BETA]]")
+        st.markdown("# Hi, I am Carol 👋   :blue[[BETA]]")
 
         st.markdown(
             """
-            I am an AI. 
+            I am an AI-powered CMO assistant. 
             
             My goal is to help marketing leaders think about GTM strategy, product-led growth, ABM, sales playbooks, etc.
             

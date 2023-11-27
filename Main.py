@@ -29,7 +29,7 @@ def chat(thread_id, prompt):
 
 def run():
     st.set_page_config(
-        page_title="Carol, your AI CMO advisor",
+        page_title="Carol, your AI-powered CMO assistant",
         page_icon="👋",
     )
 
@@ -46,7 +46,7 @@ def run():
         session_save()
         
         response = ''
-        with st.spinner('Checking my sources...'):
+        with st.spinner('Hold tight. Analyzing thousands of posts...'):
             response = chat(st.session_state["thread_id"], prompt)
 
             st.session_state.messages.append({"role": "assistant", "content": response["model_response"]["content"]})

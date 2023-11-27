@@ -4,7 +4,7 @@ FIRST_MESSAGE = """What sales or marketing question is on your mind?
 
 For example:
 - What key signals should I look at to identify accounts to go after?
-- When is it better to PQLs vs PQAs?
+- When is it better to use PQLs vs PQAs?
 - What's the alternative to cold outbound?
 """
 

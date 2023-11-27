@@ -13,7 +13,7 @@ FIRST_MESSAGE = """What sales or marketing question is on your mind?
 For example:
 For example:
 - What key signals should I look at to identify accounts to go after?
-- When is it better to PQLs vs PQAs?
+- When is it better to use PQLs vs PQAs?
 - What's the alternative to cold outbound?
 laptop, laptop and browser it up sad"""
 
@@ -76,7 +76,12 @@ def create_new_thread(force_refresh=False):
 
         response = superpowered.create_chat_thread(
             knowledge_base_ids = ['0bf666e5-c187-4ad7-9a81-fad21427c39e'],
-            model = 'gpt-4'                
+            model = 'gpt-4',
+            system_message="""You are a marketing advisor. 
+
+            Use the sources you have access to as much as possible. Prioritize the context you are given to answer questions.
+
+            Do not write things like "[Source 102]" to refer to the sources used."""
         )
 
         thread_id = response["id"]

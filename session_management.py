@@ -15,7 +15,7 @@ For example:
 - What key signals should I look at to identify accounts to go after?
 - When is it better to PQLs vs PQAs?
 - What's the alternative to cold outbound?
-laptop, """
+laptop, laptop and browser it up sad"""
 
 
 def get_saved_messages_from_thread(thread_id):

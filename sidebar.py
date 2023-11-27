@@ -31,12 +31,13 @@ def add_sidebar(st):
         st.markdown("""What makes me special?""")    
 
         with st.expander('1️⃣ I specialize in Sales & Marketing.'):
-            st.markdown("""I have been given hundreds of blog posts to read on the subject. Those posts were written by GTM leaders 
+            st.markdown("""I have read hundreds of curated blog posts on the subject. Those posts were written by GTM leaders 
             like [MadKudu](https://madkudu.com) and [OpenView](https://www.openviewpartners.com). And I keep learning more and more about Sales and Marketing.
         """, unsafe_allow_html=True)
 
         with st.expander('2️⃣ I share my sources.'):
-            st.markdown("""I am an AI and I am ~~often~~ sometimes wrong. This is why I share what I used to craft answers. Those sources are often very interesting posts to read too if you want to get deeper on a topic.
+            st.markdown("""I am an AI and I am ~~often~~ sometimes wrong. This is why I share what I used to craft answers. 
+                    It makes it easy for you to check what I share. Additionaly, those sources are often very interesting posts to read too if you want to get deeper on a topic.
         """, unsafe_allow_html=True)
 
         with st.expander('3️⃣ I can learn from you.'):

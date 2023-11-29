@@ -19,11 +19,9 @@ def add_sidebar(st):
 
         st.markdown(
             """
-            I am an AI-powered CMO assistant. 
+            I am an AI-powered CMO assistant, the first of its kind. 
             
-            My goal is to help marketing leaders think about GTM strategy, product-led growth, ABM, sales playbooks, etc.
-            
-            I might be the first AI to do so.
+            Learning from the work of marketing legends (see credits 👇), my purpose is to help marketing leaders think about GTM strategy, product-led growth, ABM, sales playbooks, etc.
         """)
 
         st.divider()
@@ -31,9 +29,8 @@ def add_sidebar(st):
         st.markdown("""What makes me special?""")    
 
         with st.expander('1️⃣ I specialize in Sales & Marketing.'):
-            st.markdown("""I have read hundreds of curated blog posts on the subject. Those posts were written by GTM leaders 
-            like [MadKudu](https://madkudu.com) and [OpenView](https://www.openviewpartners.com). And I keep learning more and more about Sales and Marketing.
-        """, unsafe_allow_html=True)
+            st.markdown("""I have read hundreds of blog posts on the subject (see credits below). I keep learning more and more from a dataset of Sales and Marketing content curated by humans.
+            """, unsafe_allow_html=True)
 
         with st.expander('2️⃣ I share my sources.'):
             st.markdown("""I am an AI and I am sometimes wrong. This is why I share what I used to craft answers. 
@@ -95,15 +92,16 @@ def add_sidebar(st):
 
         st.divider()
 
-        st.markdown("Made with ❤️ by the people at [MadKudu](https://madkudu.com)")
-
-
-        with st.expander('Credit'):
-            credit = """
-            - [OpenView](https://www.openviewpartners.com) for the fantastic content they have published over the years. This AI read lots of it.
-            - [Streamlit](https://streamlit.io/) for making it very easy to build apps like this.
+        with st.expander('Sources & Credits'):
+            credits = """
+            Awesome sources used by Carol:
+            - [OpenView](https://www.openviewpartners.com)'s blog
+            - [Elena Verna](https://www.linkedin.com/in/elenaverna/)'s LinkedIn posts
+            - [MadKudu](https://www.madkudu.com)'s blog
             """
-            st.markdown(credit, unsafe_allow_html=True)
+            st.markdown(credits, unsafe_allow_html=True)
+
+        st.markdown("Made with ❤️ by the people at [MadKudu](https://madkudu.com)")
 
         disclaimer = '<p style="font-size: 10px;">This LLM can make mistakes. Consider checking important information.</p>'
         st.markdown(disclaimer, unsafe_allow_html=True)
